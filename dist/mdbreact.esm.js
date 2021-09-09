@@ -4335,27 +4335,6 @@ FormInline.propTypes = {
   waves: propTypes.bool
 };
 
-var FreeBird = function FreeBird(props) {
-  var className = props.className,
-      Tag = props.tag,
-      attributes = _objectWithoutProperties(props, ["className", "tag"]);
-
-  var classes = classNames("container free-bird", className);
-  return React.createElement(Tag, _extends({
-    "data-test": "freebird"
-  }, attributes, {
-    className: classes
-  }));
-};
-
-FreeBird.propTypes = {
-  tag: propTypes.oneOfType([propTypes.func, propTypes.string]),
-  className: propTypes.string
-};
-FreeBird.defaultProps = {
-  tag: "div"
-};
-
 var css$7 = ".hamburger-button__checkbox {\r\n  display: none;\r\n}\r\n\r\n.hamburger-button__button {\r\n  background-color: transparent;\r\n  height: 100%;\r\n  width: 100%;\r\n  text-align: center;\r\n  cursor: pointer;\r\n  top: -5px;\r\n}\r\n\r\nlabel.hamburger-button__button {\r\n  margin-bottom: 0;\r\n}\r\n\r\n#nav-icon1 {\r\n  width: 1.5em;\r\n  height: 1.5em;\r\n  position: relative;\r\n  -webkit-transform: rotate(0deg);\r\n  -moz-transform: rotate(0deg);\r\n  -o-transform: rotate(0deg);\r\n  transform: rotate(0deg);\r\n  -webkit-transition: .5s ease-in-out;\r\n  -moz-transition: .5s ease-in-out;\r\n  -o-transition: .5s ease-in-out;\r\n  transition: .5s ease-in-out;\r\n  cursor: pointer;\r\n}\r\n\r\n#nav-icon1 span {\r\n  display: block;\r\n  position: absolute;\r\n  height: 3px;\r\n  width: 100%;\r\n  border-radius: 1px;\r\n  background-color: #fff;\r\n  opacity: 1;\r\n  left: 0;\r\n  -webkit-transform: rotate(0deg);\r\n  -moz-transform: rotate(0deg);\r\n  -o-transform: rotate(0deg);\r\n  transform: rotate(0deg);\r\n  -webkit-transition: .25s ease-in-out;\r\n  -moz-transition: .25s ease-in-out;\r\n  -o-transition: .25s ease-in-out;\r\n  transition: .25s ease-in-out;\r\n}\r\n\r\n#nav-icon1 span:nth-child(1) {\r\n  top: 5px;\r\n}\r\n\r\n#nav-icon1 span:nth-child(2) {\r\n  top: 16px;\r\n}\r\n\r\n#nav-icon1 span:nth-child(3) {\r\n  top: 27px;\r\n}\r\n\r\n.hamburger-button__checkbox:checked+#nav-icon1 span:nth-child(1) {\r\n  top: 16px;\r\n  -webkit-transform: rotate(135deg);\r\n  -moz-transform: rotate(135deg);\r\n  -o-transform: rotate(135deg);\r\n  transform: rotate(135deg);\r\n}\r\n\r\n.hamburger-button__checkbox:checked+#nav-icon1 span:nth-child(2) {\r\n  opacity: 0;\r\n  left: -60px;\r\n}\r\n\r\n.hamburger-button__checkbox:checked+#nav-icon1 span:nth-child(3) {\r\n  top: 16px;\r\n  -webkit-transform: rotate(-135deg);\r\n  -moz-transform: rotate(-135deg);\r\n  -o-transform: rotate(-135deg);\r\n  transform: rotate(-135deg);\r\n}\r\n";
 styleInject(css$7);
 
@@ -4518,26 +4497,6 @@ var InputNumeric = function InputNumeric(props) {
 InputNumeric.propTypes = {
   className: propTypes.string,
   getValue: propTypes.func
-};
-
-var Jumbotron = function Jumbotron(props) {
-  var className = props.className,
-      children = props.children,
-      fluid = props.fluid,
-      attributes = _objectWithoutProperties(props, ["className", "children", "fluid"]);
-
-  var classes = classNames('jumbotron', fluid ? 'jumbotron-fluid' : false, className);
-  return React.createElement("div", _extends({
-    "data-test": "jumbotron"
-  }, attributes, {
-    className: classes
-  }), children);
-};
-
-Jumbotron.propTypes = {
-  fluid: propTypes.bool,
-  children: propTypes.node,
-  className: propTypes.string
 };
 
 var ListGroup = function ListGroup(props) {
@@ -5282,121 +5241,6 @@ NavLink.defaultProps = {
   link: false
 };
 
-var Notification =
-/*#__PURE__*/
-function (_React$Component) {
-  _inherits(Notification, _React$Component);
-
-  function Notification() {
-    var _getPrototypeOf2;
-
-    var _this;
-
-    _classCallCheck(this, Notification);
-
-    for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
-      args[_key] = arguments[_key];
-    }
-
-    _this = _possibleConstructorReturn(this, (_getPrototypeOf2 = _getPrototypeOf(Notification)).call.apply(_getPrototypeOf2, [this].concat(args)));
-
-    _defineProperty(_assertThisInitialized(_this), "state", {
-      componentState: _this.props.show ? 'show' : 'hide'
-    });
-
-    _defineProperty(_assertThisInitialized(_this), "hide", function () {
-      var time = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 0;
-      if (_typeof(time) === 'object') time = 0;
-      setTimeout(function () {
-        _this.setState({
-          componentState: ''
-        }, function () {
-          setTimeout(function () {
-            _this.setState({
-              componentState: 'hide'
-            });
-          }, 150);
-        });
-      }, time);
-    });
-
-    return _this;
-  }
-
-  _createClass(Notification, [{
-    key: "componentDidMount",
-    value: function componentDidMount() {
-      if (this.props.autohide > 0) this.hide(this.props.autohide);
-    }
-  }, {
-    key: "render",
-    value: function render() {
-      var _this$props = this.props,
-          Tag = _this$props.tag,
-          className = _this$props.className,
-          show = _this$props.show,
-          fade = _this$props.fade,
-          message = _this$props.message,
-          bodyClassName = _this$props.bodyClassName,
-          icon = _this$props.icon,
-          iconClassName = _this$props.iconClassName,
-          title = _this$props.title,
-          titleClassName = _this$props.titleClassName,
-          text = _this$props.text,
-          closeClassName = _this$props.closeClassName,
-          attributes = _objectWithoutProperties(_this$props, ["tag", "className", "show", "fade", "message", "bodyClassName", "icon", "iconClassName", "title", "titleClassName", "text", "closeClassName"]);
-
-      var classes = classNames('toast', fade && 'fade', this.state.componentState, className);
-      var headerClasses = classNames('toast-header', titleClassName);
-      var iconClassNames = classNames('mr-2', iconClassName);
-      var bodyClasses = classNames('toast-body', bodyClassName);
-      var closeClasses = classNames('ml-2', 'mb-1', closeClassName);
-      return React.createElement(Tag, _extends({
-        "data-test": "notification"
-      }, attributes, {
-        className: classes
-      }), React.createElement("div", {
-        className: headerClasses
-      }, React.createElement(Fa, {
-        icon: icon,
-        className: iconClassNames,
-        size: "lg"
-      }), React.createElement("strong", {
-        className: "mr-auto"
-      }, title), React.createElement("small", null, text), React.createElement(MDBCloseIcon, {
-        className: closeClasses,
-        onClick: this.hide
-      })), React.createElement("div", {
-        className: bodyClasses
-      }, message));
-    }
-  }]);
-
-  return Notification;
-}(React.Component);
-
-Notification.propTypes = {
-  tag: propTypes.oneOfType([propTypes.func, propTypes.string]),
-  className: propTypes.string,
-  show: propTypes.bool,
-  fade: propTypes.bool,
-  autohide: propTypes.number,
-  iconClassName: propTypes.string,
-  title: propTypes.string,
-  text: propTypes.string,
-  titleColor: propTypes.string,
-  titleClassName: propTypes.string,
-  closeClassName: propTypes.string,
-  bodyClassName: propTypes.string,
-  bodyColor: propTypes.string,
-  message: propTypes.string
-};
-Notification.defaultProps = {
-  icon: 'square',
-  tag: 'div',
-  closeClassName: 'text-dark'
-};
-
 var Popper = function Popper(_ref) {
   var children = _ref.children,
       className = _ref.className,
@@ -5655,306 +5499,6 @@ Progress.defaultProps = {
   value: 0
 };
 
-var Rating = function Rating(props) {
-  var _useState = useState([]),
-      _useState2 = _slicedToArray(_useState, 2),
-      data = _useState2[0],
-      setData = _useState2[1];
-
-  var _useState3 = useState(null),
-      _useState4 = _slicedToArray(_useState3, 2),
-      hovered = _useState4[0],
-      setHovered = _useState4[1];
-
-  var _useState5 = useState({
-    title: '',
-    index: null
-  }),
-      _useState6 = _slicedToArray(_useState5, 2),
-      choosed = _useState6[0],
-      setChoosed = _useState6[1];
-
-  var _useState7 = useState(''),
-      _useState8 = _slicedToArray(_useState7, 2),
-      feedbackValue = _useState8[0],
-      setFeedbackValue = _useState8[1];
-
-  var _useState9 = useState(null),
-      _useState10 = _slicedToArray(_useState9, 2),
-      openedForm = _useState10[0],
-      setOpenedForm = _useState10[1];
-
-  var onDocumentClick = function onDocumentClick(e) {
-    if (!e.target.closest('.popover')) {
-      setOpenedForm(null);
-    }
-  };
-
-  useEffect(function () {
-    window.addEventListener('click', onDocumentClick);
-    return function () {
-      return window.removeEventListener('click', onDocumentClick);
-    };
-  }, []);
-  useEffect(function () {
-    setData(props.data);
-  }, [props.data]);
-  useEffect(function () {
-    var choosedIndex = data.findIndex(function (item) {
-      return item.choosed;
-    });
-    if (choosedIndex !== -1) setChoosed({
-      title: data[choosedIndex].tooltip,
-      index: choosedIndex
-    });
-  }, [data]);
-  useEffect(function () {
-    if (props.getValue) {
-      var title = choosed.title,
-          index = choosed.index;
-      index = index !== null ? index + 1 : index;
-      props.getValue({
-        title: title,
-        value: index
-      });
-    }
-  }, [choosed, props]);
-
-  var handleMouseEnter = function handleMouseEnter(_, index) {
-    setHovered(index);
-  };
-
-  var handleMouseLeave = function handleMouseLeave() {
-    setHovered(null);
-  };
-
-  var handleClick = function handleClick(title, index, e) {
-    e.stopPropagation();
-
-    if (feedback) {
-      var unHoverPopper = document.createElement('div');
-      var size = 50;
-      unHoverPopper.classList.add('to-remove');
-      unHoverPopper.style.cssText = "\n      display: block;\n      height: ".concat(size, "px;\n      width: ").concat(size, "px;\n      position: absolute;\n      top: ").concat(e.pageY - size / 2, "px;\n      left: ").concat(e.pageX - size / 2, "px;\n      cursor: pointer\n    ");
-      e.target.closest('.mdb-rating').appendChild(unHoverPopper);
-      unHoverPopper.addEventListener('mouseout', function () {
-        return unHoverPopper.remove();
-      });
-      setTimeout(function () {
-        unHoverPopper.remove();
-      }, 100);
-    }
-
-    if (title === choosed.title && index === choosed.index) {
-      setChoosed({
-        title: '',
-        index: null
-      });
-      feedback && setOpenedForm(null);
-    } else {
-      setChoosed({
-        title: title,
-        index: index
-      });
-      feedback && setTimeout(function () {
-        setOpenedForm(index);
-      }, 1);
-    }
-  };
-
-  var onCloseHanlder = function onCloseHanlder() {
-    setFeedbackValue('');
-    setOpenedForm(null);
-  };
-
-  var feedbackValueHandler = function feedbackValueHandler(e) {
-    setFeedbackValue(e.target.value);
-  };
-
-  var Tag = props.tag,
-      containerClassName = props.containerClassName,
-      iconClassName = props.iconClassName,
-      iconFaces = props.iconFaces,
-      iconSize = props.iconSize,
-      iconRegular = props.iconRegular,
-      fillClassName = props.fillClassName,
-      fillColors = props.fillColors,
-      getValue = props.getValue,
-      feedback = props.feedback,
-      submitHandler = props.submitHandler,
-      commonAttributes = _objectWithoutProperties(props, ["tag", "containerClassName", "iconClassName", "iconFaces", "iconSize", "iconRegular", "fillClassName", "fillColors", "getValue", "feedback", "submitHandler"]);
-
-  var containerClasses = classNames('mdb-rating', 'd-flex', 'justify-content-start', 'align-items-center', containerClassName);
-  var renderedIcons = [];
-
-  if (data.length) {
-    renderedIcons = data.map(function (_ref, index) {
-      var _ref$icon = _ref.icon,
-          icon = _ref$icon === void 0 ? 'star' : _ref$icon,
-          tooltip = _ref.tooltip,
-          far = _ref.far,
-          size = _ref.size,
-          _ = _ref.choosed,
-          itemAttributes = _objectWithoutProperties(_ref, ["icon", "tooltip", "far", "size", "choosed"]);
-
-      var isChoosed = choosed.index !== null;
-      var isHovered = hovered !== null;
-      var isFormOpened = openedForm !== null;
-      var isFormActive = feedback && isFormOpened && openedForm === index;
-      var toFill = false;
-
-      if (isChoosed) {
-        toFill = index <= choosed.index;
-
-        if (isHovered && hovered > choosed.index) {
-          toFill = index <= hovered;
-        }
-      } else if (isHovered) {
-        toFill = index <= hovered;
-      }
-
-      var fillColor = '';
-
-      if (fillColors) {
-        var current = null;
-
-        if (isChoosed) {
-          current = choosed.index;
-          if (isHovered) current = hovered;
-        } else if (isHovered) current = hovered;
-
-        var isCustom = Array.isArray(fillColors);
-        var defaultFillColors = ['oneStar', 'twoStars', 'threeStars', 'fourStars', 'fiveStars'];
-
-        if (current !== null) {
-          fillColor = isCustom ? fillColors[current] : defaultFillColors[current];
-        }
-      }
-
-      var iconClasses = classNames('py-2 px-1 rate-popover', toFill && (fillColors ? fillColor : fillClassName), iconClassName);
-      var renderIcon = icon;
-
-      if (iconFaces) {
-        var faces = ['angry', 'frown', 'meh', 'smile', 'laugh'];
-        renderIcon = 'meh-blank';
-
-        if (isChoosed && index <= choosed.index) {
-          renderIcon = faces[choosed.index];
-          if (isHovered) renderIcon = faces[hovered];
-        } else if (isHovered && index <= hovered) {
-          renderIcon = faces[hovered];
-        }
-      }
-
-      var tooltipContent = tooltip;
-
-      if (isFormActive) {
-        tooltipContent = React.createElement("form", {
-          onSubmit: function onSubmit(e) {
-            submitHandler(e, tooltip, openedForm + 1, feedbackValue);
-            onCloseHanlder();
-          }
-        }, React.createElement(MDBPopoverHeader, null, tooltip), React.createElement(MDBPopoverBody, null, React.createElement("textarea", {
-          type: "text",
-          className: "md-textarea form-control py-0",
-          value: feedbackValue,
-          onChange: feedbackValueHandler,
-          style: {
-            resize: 'none'
-          }
-        }), React.createElement("div", {
-          className: "d-flex align-items-center justify-content-around mt-2"
-        }, React.createElement(MDBBtn, {
-          type: "submit",
-          color: "primary",
-          size: "sm"
-        }, "Submit!"), React.createElement("button", {
-          onMouseDown: onCloseHanlder,
-          style: {
-            backgroundColor: '#fff',
-            border: 'none',
-            padding: '0.5rem 1.6rem'
-          }
-        }, "Close"))));
-      }
-
-      return React.createElement(MDBTooltip, {
-        key: tooltip,
-        domElement: true,
-        placement: "top",
-        tag: "span",
-        popover: isFormActive,
-        isVisible: isFormActive,
-        clickable: isFormActive
-      }, React.createElement("span", null, React.createElement(Fa$1, _extends({
-        style: {
-          cursor: 'pointer'
-        }
-      }, commonAttributes, itemAttributes, {
-        icon: renderIcon,
-        size: size || iconSize,
-        far: far || iconRegular,
-        className: iconClasses,
-        "data-index": index,
-        "data-original-title": tooltip,
-        onMouseEnter: function onMouseEnter() {
-          return handleMouseEnter(tooltip, index);
-        },
-        onMouseLeave: handleMouseLeave,
-        onClick: function onClick(e) {
-          return handleClick(tooltip, index, e);
-        }
-      }))), React.createElement("div", null, tooltipContent));
-    });
-  }
-
-  return React.createElement(Tag, {
-    className: containerClasses
-  }, renderedIcons);
-};
-
-Rating.propTypes = {
-  containerClassName: propTypes.string,
-  data: propTypes.arrayOf(propTypes.shape({
-    icon: propTypes.string,
-    tooltip: propTypes.string,
-    choosed: propTypes.bool
-  })),
-  feedback: propTypes.bool,
-  fillClassName: propTypes.string,
-  fillColors: propTypes.oneOfType([propTypes.bool, propTypes.arrayOf(propTypes.string)]),
-  iconClassName: propTypes.string,
-  iconFaces: propTypes.bool,
-  iconSize: propTypes.string,
-  iconRegular: propTypes.bool,
-  tag: propTypes.string,
-  getValue: propTypes.func,
-  submitHandler: propTypes.func
-};
-Rating.defaultProps = {
-  containerClassName: '',
-  data: [{
-    tooltip: 'Very Bad'
-  }, {
-    tooltip: 'Poor'
-  }, {
-    tooltip: 'Ok'
-  }, {
-    tooltip: 'Good'
-  }, {
-    tooltip: 'Excellent'
-  }],
-  feedback: false,
-  fillClassName: 'fiveStars',
-  iconClassName: '',
-  iconSize: '1x',
-  iconRegular: false,
-  tag: 'div',
-  submitHandler: function submitHandler(e) {
-    return e.preventDefault();
-  }
-};
-
 var Row = function Row(props) {
   var className = props.className,
       Tag = props.tag,
@@ -6099,243 +5643,6 @@ TabPane.contextTypes = {
 TabPane.propTypes = {
   tabId: propTypes.any,
   className: propTypes.string
-};
-
-var TreeviewContext = React.createContext();
-
-var Treeview = function Treeview(props) {
-  var _useState = useState(null),
-      _useState2 = _slicedToArray(_useState, 2),
-      active = _useState2[0],
-      setActive = _useState2[1];
-
-  useEffect(function () {
-    if (props.getValue) {
-      props.getValue({
-        item: active ? active.closest('li') : active,
-        value: active ? active.closest('li').childNodes[1].textContent : active
-      });
-    }
-  }, [active, props]);
-
-  var getActive = function getActive(target) {
-    setActive(target);
-    return target;
-  };
-
-  var theme = props.theme,
-      children = props.children,
-      className = props.className,
-      getValue = props.getValue,
-      header = props.header,
-      listClassName = props.listClassName,
-      Tag = props.tag,
-      attributes = _objectWithoutProperties(props, ["theme", "children", "className", "getValue", "header", "listClassName", "tag"]);
-
-  var classes = classNames('border', theme ? "treeview-".concat(theme) : 'treeview', className);
-  var ulClasses = classNames('list-unstyled', header ? 'pb-2 mb-1' : 'py-2 my-1', theme && "treeview-".concat(theme, "-list"), theme === 'animated' || !theme && 'pl-3', listClassName);
-  var head = header && React.createElement(React.Fragment, null, React.createElement("h6", {
-    className: "pt-3 pl-3"
-  }, header), React.createElement("hr", null));
-  return React.createElement(Tag, _extends({
-    "data-test": "treeview"
-  }, attributes, {
-    className: classes
-  }), head, React.createElement("ul", {
-    className: ulClasses
-  }, React.createElement(TreeviewContext.Provider, {
-    value: {
-      active: active,
-      theme: theme,
-      getActive: getActive
-    }
-  }, children)));
-};
-
-Treeview.propTypes = {
-  className: propTypes.string,
-  header: propTypes.string,
-  listClassName: propTypes.string,
-  tag: propTypes.string,
-  theme: propTypes.string,
-  getValue: propTypes.func
-};
-Treeview.defaultProps = {
-  tag: 'div',
-  theme: '',
-  getValue: function getValue() {}
-};
-
-var TreeviewItem = function TreeviewItem(props) {
-  var _useState = useState(''),
-      _useState2 = _slicedToArray(_useState, 2),
-      target = _useState2[0],
-      setTarget = _useState2[1];
-
-  var targetRef = useRef(null);
-
-  var className = props.className,
-      disabled = props.disabled,
-      disabledClassName = props.disabledClassName,
-      fab = props.fab,
-      fal = props.fal,
-      far = props.far,
-      icon = props.icon,
-      opened = props.opened,
-      Tag = props.tag,
-      title = props.title,
-      attributes = _objectWithoutProperties(props, ["className", "disabled", "disabledClassName", "fab", "fal", "far", "icon", "opened", "tag", "title"]);
-
-  var _useContext = useContext(TreeviewContext),
-      theme = _useContext.theme,
-      active = _useContext.active,
-      getActive = _useContext.getActive;
-
-  useEffect(function () {
-    if (targetRef && targetRef.current) {
-      setTarget(targetRef.current);
-    }
-  }, []);
-
-  var handleClick = function handleClick() {
-    if (!disabled) {
-      target.classList.contains('opened') ? getActive(null) : getActive(target);
-    }
-  };
-
-  var classes = classNames(disabled && disabledClassName, theme && "treeview-".concat(theme, "-items treeview-").concat(theme, "-element closed mb-1"), active === target && !active.classList.contains('opened') ? 'opened' : '', className);
-  return React.createElement(Tag, _extends({
-    "data-test": "treeview-item"
-  }, attributes, {
-    className: classes,
-    ref: targetRef,
-    onMouseDown: handleClick,
-    style: {
-      transform: 'translateY(0.3em)'
-    }
-  }), React.createElement(Fa, {
-    className: "mr-2",
-    fab: fab,
-    fal: fal,
-    far: far,
-    icon: icon
-  }), React.createElement("span", null, title));
-};
-
-TreeviewItem.propTypes = {
-  className: propTypes.string,
-  disabled: propTypes.bool,
-  disabledClassName: propTypes.string,
-  fab: propTypes.bool,
-  fal: propTypes.bool,
-  far: propTypes.bool,
-  icon: propTypes.string,
-  opened: propTypes.bool,
-  tag: propTypes.oneOfType([propTypes.func, propTypes.string])
-};
-TreeviewItem.defaultProps = {
-  disabled: false,
-  fab: false,
-  fal: false,
-  far: false,
-  icon: 'folder-open',
-  opened: false,
-  tag: 'li'
-};
-
-var TreeviewList = function TreeviewList(props) {
-  var _useState = useState(false),
-      _useState2 = _slicedToArray(_useState, 2),
-      opened = _useState2[0],
-      setOpen = _useState2[1];
-
-  useEffect(function () {
-    setOpen(props.opened);
-  }, [props.opened]);
-
-  var handleSwitch = function handleSwitch() {
-    return setOpen(!opened);
-  };
-
-  var children = props.children,
-      className = props.className,
-      disabled = props.disabled,
-      disabledClassName = props.disabledClassName,
-      fab = props.fab,
-      fal = props.fal,
-      far = props.far,
-      icon = props.icon,
-      _ = props.opened,
-      Tag = props.tag,
-      title = props.title,
-      attributes = _objectWithoutProperties(props, ["children", "className", "disabled", "disabledClassName", "fab", "fal", "far", "icon", "opened", "tag", "title"]);
-
-  var _useContext = useContext(TreeviewContext),
-      theme = _useContext.theme;
-
-  var nestedClasses = classNames('nested', opened && 'active');
-  var folder = classNames(theme && "closed treeview-".concat(theme, "-element d-block"), !children && 'ml-2', opened && 'opened', disabled && disabledClassName);
-  var classes = classNames(theme && "treeview-".concat(theme, "-items px-0"), className);
-  var iconClasses = classNames(theme ? 'mx-2' : 'mr-2');
-  var child = children && React.createElement("ul", {
-    className: nestedClasses,
-    style: {
-      height: 'calc(100% + 0.6rem)',
-      marginLeft: '2px'
-    }
-  }, children);
-  var collapse = theme && React.createElement(Collapse, {
-    isOpen: opened
-  }, child);
-  var iconArrow = theme !== 'colorful' ? 'angle-right' : opened ? 'minus-circle' : 'plus-circle';
-  var arrow = children && React.createElement(Fa, {
-    icon: iconArrow,
-    rotate: theme !== 'colorful' ? opened ? '90 down' : '0' : '',
-    className: "rotate"
-  });
-  var btn = children && React.createElement(Button, {
-    flat: true,
-    className: "m-0 py-0 px-1 mr-1 z-depth-0",
-    onClick: handleSwitch
-  }, arrow);
-  return React.createElement(Tag, _extends({
-    "data-test": "treeview-list"
-  }, attributes, {
-    className: classes
-  }), React.createElement("span", {
-    className: folder,
-    onClick: !disabled && theme ? handleSwitch : null
-  }, theme ? arrow : btn, React.createElement("span", null, React.createElement(Fa, {
-    className: iconClasses,
-    fab: fab,
-    fal: fal,
-    far: far,
-    icon: icon
-  }), title)), collapse || child);
-};
-
-TreeviewList.propTypes = {
-  className: propTypes.string,
-  disabled: propTypes.bool,
-  disabledClassName: propTypes.string,
-  fab: propTypes.bool,
-  fal: propTypes.bool,
-  far: propTypes.bool,
-  icon: propTypes.string,
-  opened: propTypes.bool,
-  tag: propTypes.string
-};
-TreeviewList.defaultProps = {
-  disabled: false,
-  fab: false,
-  fal: false,
-  far: false,
-  icon: 'folder-open',
-  opened: false,
-  tag: 'li'
-};
-TreeviewList.contextTypes = {
-  theme: propTypes.string
 };
 
 var Avatar = function Avatar(props) {
@@ -6677,107 +5984,6 @@ CollapseHeader.propTypes = {
   className: propTypes.string,
   tagClassName: propTypes.string,
   tag: propTypes.string
-};
-
-var css$9 = "/* fallback */\r\n@font-face {\r\n  font-family: 'Material Icons';\r\n  font-style: normal;\r\n  font-weight: 400;\r\n  src: url(https://fonts.gstatic.com/s/materialicons/v41/flUhRq6tzZclQEJ-Vdg-IuiaDsNc.woff2) format('woff2');\r\n}\r\n\r\n.material-icons {\r\n  font-family: 'Material Icons';\r\n  font-weight: normal;\r\n  font-style: normal;\r\n  font-size: 24px;\r\n  line-height: 1;\r\n  letter-spacing: normal;\r\n  text-transform: none;\r\n  display: inline-block;\r\n  white-space: nowrap;\r\n  word-wrap: normal;\r\n  direction: ltr;\r\n  -webkit-font-feature-settings: 'liga';\r\n  -webkit-font-smoothing: antialiased;\r\n}\r\n";
-styleInject(css$9);
-
-var css$a = ".file-field .file-field-right .file-path-wrapper {\r\n  padding-left: 0;\r\n  padding-right: 10px;\r\n}\r\n";
-styleInject(css$a);
-
-var InputFile = function InputFile(props) {
-  var _useState = useState(false),
-      _useState2 = _slicedToArray(_useState, 2),
-      files = _useState2[0],
-      setFiles = _useState2[1];
-
-  var fileChange = function fileChange(files) {
-    if (files.length > 0) {
-      if (files.length > 1) {
-        var filesNames = [];
-
-        for (var i = 0; i < files.length; i++) {
-          filesNames.push(files[i].name);
-        }
-
-        setFiles(filesNames);
-      } else {
-        setFiles(files[0].name);
-      }
-    } else {
-      setFiles(false);
-    }
-  };
-
-  var onChangeHandler = function onChangeHandler(e) {
-    fileChange(e.target.files);
-    props.getValue && props.getValue(e.target.files);
-  };
-
-  var resetFiles = function resetFiles() {
-    files && setFiles(false);
-  };
-
-  var className = props.className,
-      btnTitle = props.btnTitle,
-      btnColor = props.btnColor,
-      textFieldTitle = props.textFieldTitle,
-      multiple = props.multiple,
-      reset = props.reset,
-      resetClassName = props.resetClassName,
-      resetAriaLabel = props.resetAriaLabel,
-      reverse = props.reverse;
-  var btnClass = classNames('btn', 'btn-' + btnColor, 'btn-sm', reverse ? 'float-right' : 'float-left');
-  var inputFieldClass = classNames('file-path', 'validate', files ? 'valid' : false, className);
-  var wrapperClass = classNames('file-field', 'md-form', reverse && 'file-field-right');
-  return React.createElement("div", {
-    "data-test": "input-file",
-    className: wrapperClass
-  }, React.createElement("div", {
-    className: btnClass
-  }, React.createElement("span", null, btnTitle), React.createElement("input", {
-    multiple: multiple,
-    onChange: onChangeHandler,
-    type: "file"
-  })), React.createElement("div", {
-    className: "file-path-wrapper"
-  }, React.createElement("input", {
-    className: inputFieldClass,
-    type: "text",
-    placeholder: files ? files : textFieldTitle,
-    style: {
-      position: reset ? 'relative' : null
-    }
-  })), reset && React.createElement(MDBCloseIcon, {
-    onClick: resetFiles,
-    className: resetClassName,
-    ariaLabel: resetAriaLabel ? resetAriaLabel : null,
-    style: {
-      position: 'absolute',
-      top: '50%',
-      right: '0',
-      transform: 'translateY(-50%)'
-    }
-  }));
-};
-
-InputFile.propTypes = {
-  className: propTypes.string,
-  btnTitle: propTypes.string,
-  btnColor: propTypes.string,
-  textFieldTitle: propTypes.string,
-  multiple: propTypes.bool,
-  reset: propTypes.bool,
-  resetClassName: propTypes.string,
-  resetAriaLabel: propTypes.string,
-  reverse: propTypes.bool
-};
-InputFile.defaultProps = {
-  btnTitle: 'Choose file',
-  textFieldTitle: 'Upload your file',
-  btnColor: 'primary',
-  reset: false,
-  reverse: false
 };
 
 var css$b = ".thumb {\r\n  transition: top .2s, height .2s, width .2s, margin-left .2s;\r\n}\r\n\r\ninput[type=\"range\"] {\r\n  -webkit-appearance: none;\r\n}\r\n\r\n/* thumb */\r\n\r\ninput[type=range]::-webkit-slider-thumb {\r\n  -webkit-appearance: none;\r\n  border: none;\r\n  height: 14px;\r\n  width: 14px;\r\n  border-radius: 50%;\r\n  background-color: #4285f4;\r\n  transform-origin: 50% 50%;\r\n  margin: -5px 0 0 0;\r\n  transition: 0.3s; }\r\n  input[type=range]:focus::-webkit-slider-runnable-track {\r\n    background: #ccc; }\r\n  input[type=range]::-moz-range-track {\r\n    /*required for proper track sizing in FF*/\r\n    height: 3px;\r\n    background: #c2c0c2;\r\n    border: none; }\r\n  input[type=range]::-moz-range-thumb {\r\n    border: none;\r\n    height: 14px;\r\n    width: 14px;\r\n    border-radius: 50%;\r\n    background: #4285f4;\r\n    margin-top: -5px; }\r\n  input[type=range]:-moz-focusring {\r\n    /*hide the outline behind the border*/\r\n    outline: 1px solid #ffffff;\r\n    outline-offset: -1px; }\r\n  input[type=range]:focus::-moz-range-track {\r\n    background: #c2c0c2; }\r\n  input[type=range]::-ms-track {\r\n    height: 3px;\r\n    background: transparent;\r\n    /*remove bg colour from the track, we'll use ms-fill-lower and ms-fill-upper instead */\r\n    border-color: transparent;\r\n    /*leave room for the larger thumb to overflow with a transparent border */\r\n    border-width: 6px 0;\r\n    color: transparent;\r\n    /*remove default tick marks*/ }\r\n  input[type=range]::-ms-fill-lower {\r\n    background: #c2c0c2; }\r\n  input[type=range]::-ms-fill-upper {\r\n    background: #c2c0c2; }\r\n  input[type=range]::-ms-thumb {\r\n    border: none;\r\n    height: 14px;\r\n    width: 14px;\r\n    border-radius: 50%;\r\n    background: #4285f4; }\r\n  input[type=range]:focus::-ms-fill-lower {\r\n    background: #c2c0c2; }\r\n  input[type=range]:focus::-ms-fill-upper {\r\n    background: #c2c0c2; }";
@@ -8763,141 +7969,7 @@ Stepper.defaultProps = {
   form: false
 };
 
-var Sticky =
-/*#__PURE__*/
-function (_Component) {
-  _inherits(Sticky, _Component);
 
-  function Sticky() {
-    var _getPrototypeOf2;
-
-    var _this;
-
-    _classCallCheck(this, Sticky);
-
-    for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
-      args[_key] = arguments[_key];
-    }
-
-    _this = _possibleConstructorReturn(this, (_getPrototypeOf2 = _getPrototypeOf(Sticky)).call.apply(_getPrototypeOf2, [this].concat(args)));
-
-    _defineProperty(_assertThisInitialized(_this), "state", {
-      isSticky: false,
-      wasSticky: false,
-      style: {}
-    });
-
-    _defineProperty(_assertThisInitialized(_this), "handleContainerEvent", function (_ref) {
-      var distanceFromTop = _ref.distanceFromTop,
-          distanceFromBottom = _ref.distanceFromBottom,
-          eventSource = _ref.eventSource;
-
-      var parent = _this.context.getParent();
-
-      var preventingStickyStateChanges = false;
-
-      if (_this.props.relative) {
-        preventingStickyStateChanges = eventSource !== parent;
-        distanceFromTop = -(eventSource.scrollTop + eventSource.offsetTop) + _this.placeholder.offsetTop;
-      }
-
-      var placeholderClientRect = _this.placeholder.getBoundingClientRect();
-
-      var contentClientRect = _this.content.getBoundingClientRect();
-
-      var calculatedHeight = contentClientRect.height;
-      var bottomDifference = distanceFromBottom - _this.props.bottomOffset - calculatedHeight;
-      var wasSticky = !!_this.state.isSticky;
-      var isSticky = preventingStickyStateChanges ? wasSticky : distanceFromTop <= -_this.props.topOffset && distanceFromBottom > -_this.props.bottomOffset;
-      distanceFromBottom = (_this.props.relative ? parent.scrollHeight - parent.scrollTop : distanceFromBottom) - calculatedHeight;
-      var style = !isSticky ? {} : {
-        position: "fixed",
-        top: bottomDifference > 0 ? _this.props.relative ? parent.offsetTop - parent.offsetParent.scrollTop : 0 : bottomDifference,
-        left: placeholderClientRect.left,
-        width: placeholderClientRect.width
-      };
-
-      if (!_this.props.disableHardwareAcceleration) {
-        style.transform = "translateZ(0)";
-      }
-
-      _this.setState({
-        isSticky: isSticky,
-        wasSticky: wasSticky,
-        distanceFromTop: distanceFromTop,
-        distanceFromBottom: distanceFromBottom,
-        calculatedHeight: calculatedHeight,
-        style: style
-      });
-    });
-
-    return _this;
-  }
-
-  _createClass(Sticky, [{
-    key: "componentDidMount",
-    value: function componentDidMount() {
-      if (!this.context.subscribe) throw new TypeError("Expected Sticky to be mounted within StickyContainer");
-      this.context.subscribe(this.handleContainerEvent);
-    }
-  }, {
-    key: "componentWillUnmount",
-    value: function componentWillUnmount() {
-      this.context.unsubscribe(this.handleContainerEvent);
-    }
-  }, {
-    key: "componentDidUpdate",
-    value: function componentDidUpdate() {
-      this.placeholder.style.paddingBottom = this.props.disableCompensation ? 0 : "".concat(this.state.isSticky ? this.state.calculatedHeight : 0, "px");
-    }
-  }, {
-    key: "render",
-    value: function render() {
-      var _this2 = this;
-
-      var element = React.cloneElement(this.props.children({
-        isSticky: this.state.isSticky,
-        wasSticky: this.state.wasSticky,
-        distanceFromTop: this.state.distanceFromTop,
-        distanceFromBottom: this.state.distanceFromBottom,
-        calculatedHeight: this.state.calculatedHeight,
-        style: this.state.style
-      }), {
-        ref: function ref(content) {
-          _this2.content = ReactDOM.findDOMNode(content);
-        }
-      });
-      return React.createElement("div", null, React.createElement("div", {
-        ref: function ref(placeholder) {
-          return _this2.placeholder = placeholder;
-        }
-      }), element);
-    }
-  }]);
-
-  return Sticky;
-}(Component);
-
-_defineProperty(Sticky, "propTypes", {
-  topOffset: propTypes.number,
-  bottomOffset: propTypes.number,
-  relative: propTypes.bool,
-  children: propTypes.func.isRequired
-});
-
-_defineProperty(Sticky, "defaultProps", {
-  relative: false,
-  topOffset: 0,
-  bottomOffset: 0,
-  disableCompensation: false,
-  disableHardwareAcceleration: false
-});
-
-_defineProperty(Sticky, "contextTypes", {
-  subscribe: propTypes.func,
-  unsubscribe: propTypes.func,
-  getParent: propTypes.func
-});
 
 var Container$1 =
 /*#__PURE__*/
@@ -9035,74 +8107,6 @@ Testimonial.defaultProps = {
   tag: "div"
 };
 
-var css$h = "@media (max-width: 1025px) {\r\n  .stepper.timeline li {\r\n    -webkit-box-align: end;\r\n    -webkit-align-items: flex-end;\r\n    -ms-flex-align: end;\r\n    align-items: flex-end;\r\n  }\r\n}\r\n\r\n.stepper.timeline li a {\r\n  padding: 0px 24px;\r\n  left: 50%;\r\n}\r\n@media (max-width: 450px) {\r\n  .stepper.timeline li a {\r\n    left: 6%;\r\n  }\r\n}\r\n@media (min-width: 451px) and (max-width: 1025px) {\r\n  .stepper.timeline li a {\r\n    left: 6%;\r\n  }\r\n}\r\n.stepper.timeline li a .circle {\r\n  width: 50px;\r\n  height: 50px;\r\n  line-height: 50px;\r\n  font-size: 1.4em;\r\n  text-align: center;\r\n  position: absolute;\r\n  top: 16px;\r\n  margin-left: -50px;\r\n  background-color: #fff;\r\n  z-index: 2;\r\n}\r\n\r\n.stepper.timeline li .step-content {\r\n  width: 45%;\r\n  float: left;\r\n  border-radius: 2px;\r\n  position: relative;\r\n  background-color: #fff;\r\n}\r\n.stepper.timeline li .step-content:before {\r\n  position: absolute;\r\n  top: 26px;\r\n  right: -15px;\r\n  display: inline-block;\r\n  border-top: 15px solid transparent;\r\n  border-left: 15px solid #e0e0e0;\r\n  border-right: 0 solid #e0e0e0;\r\n  border-bottom: 15px solid transparent;\r\n  content: \" \";\r\n}\r\n.stepper.timeline li .step-content:after {\r\n  position: absolute;\r\n  top: 27px;\r\n  right: -14px;\r\n  display: inline-block;\r\n  border-top: 14px solid transparent;\r\n  border-left: 14px solid #fff;\r\n  border-right: 0 solid #fff;\r\n  border-bottom: 14px solid transparent;\r\n  content: \" \";\r\n}\r\n@media (max-width: 450px) {\r\n  .stepper.timeline li .step-content {\r\n    width: 80%;\r\n    left: 3rem;\r\n    margin-right: 3rem;\r\n    margin-bottom: 2rem;\r\n    float: right;\r\n  }\r\n  .stepper.timeline li .step-content:before {\r\n    border-left-width: 0;\r\n    border-right-width: 15px;\r\n    left: -15px;\r\n    right: auto;\r\n  }\r\n  .stepper.timeline li .step-content:after {\r\n    border-left-width: 0;\r\n    border-right-width: 14px;\r\n    left: -14px;\r\n    right: auto;\r\n  }\r\n}\r\n@media (min-width: 451px) and (max-width: 1025px) {\r\n  .stepper.timeline li .step-content {\r\n    width: 85%;\r\n    left: 3rem;\r\n    margin-right: 3rem;\r\n    margin-bottom: 2rem;\r\n    float: right;\r\n  }\r\n  .stepper.timeline li .step-content:before {\r\n    border-left-width: 0;\r\n    border-right-width: 15px;\r\n    left: -15px;\r\n    right: auto;\r\n  }\r\n  .stepper.timeline li .step-content:after {\r\n    border-left-width: 0;\r\n    border-right-width: 14px;\r\n    left: -14px;\r\n    right: auto;\r\n  }\r\n}\r\n\r\n.stepper.timeline li.timeline-inverted {\r\n  -webkit-box-align: end;\r\n  -webkit-align-items: flex-end;\r\n  -ms-flex-align: end;\r\n  align-items: flex-end;\r\n}\r\n.stepper.timeline li.timeline-inverted .step-content {\r\n  float: right;\r\n}\r\n.stepper.timeline li.timeline-inverted .step-content:before {\r\n  border-left-width: 0;\r\n  border-right-width: 15px;\r\n  left: -15px;\r\n  right: auto;\r\n}\r\n.stepper.timeline li.timeline-inverted .step-content:after {\r\n  border-left-width: 0;\r\n  border-right-width: 14px;\r\n  left: -14px;\r\n  right: auto;\r\n}\r\n\r\n.stepper.timeline.stepper-vertical li:not(:last-child):after {\r\n  content: \" \";\r\n  position: absolute;\r\n  width: 3px;\r\n  background-color: #e0e0e0;\r\n  left: 50%;\r\n  top: 57px;\r\n  margin-left: -1.5px;\r\n}\r\n@media (max-width: 450px) {\r\n  .stepper.timeline.stepper-vertical li:not(:last-child):after {\r\n    left: 6%;\r\n  }\r\n}\r\n@media (min-width: 451px) and (max-width: 1025px) {\r\n  .stepper.timeline.stepper-vertical li:not(:last-child):after {\r\n    left: 6%;\r\n  }\r\n}\r\n";
-styleInject(css$h);
-
-var Timeline = function Timeline(props) {
-  var children = props.children;
-  return React.createElement("ul", {
-    className: "stepper stepper-vertical timeline pl-0"
-  }, children);
-};
-
-var TimelineStep = function TimelineStep(props) {
-  var href = props.href,
-      color = props.color,
-      icon = props.icon,
-      iconBrand = props.iconBrand,
-      iconClass = props.iconClass,
-      iconLight = props.iconLight,
-      iconRegular = props.iconRegular,
-      iconSize = props.iconSize,
-      className = props.className,
-      children = props.children,
-      inverted = props.inverted,
-      colorful = props.colorful,
-      hoverable = props.hoverable,
-      label = props.label;
-  var circleClasses = classNames("circle", "z-depth-1-half", color ? color : "primary-color", className);
-  var stepContentClasses = classNames("step-content", "z-depth-1", "ml-xl-0", colorful ? "p-0 mt-2" : "p-4", hoverable && "hoverable");
-  var liClasses = classNames(inverted && "timeline-inverted");
-  return React.createElement("li", {
-    className: liClasses
-  }, React.createElement("a", {
-    href: href
-  }, React.createElement("span", {
-    className: circleClasses
-  }, icon && React.createElement(Fa, {
-    icon: icon,
-    size: iconSize,
-    brand: iconBrand,
-    light: iconLight,
-    regular: iconRegular,
-    className: iconClass
-  }), label)), React.createElement("div", {
-    className: stepContentClasses
-  }, children));
-};
-
-TimelineStep.propTypes = {
-  href: propTypes.string,
-  color: propTypes.string,
-  size: propTypes.string,
-  icon: propTypes.string,
-  iconBrand: propTypes.bool,
-  iconClass: propTypes.string,
-  iconLight: propTypes.bool,
-  iconRegular: propTypes.bool,
-  iconSize: propTypes.string,
-  className: propTypes.string
-};
-TimelineStep.defaultProps = {
-  href: "#"
-};
-
-var css$i = ".time-picker-clock {\r\n  border-radius: 100%;\r\n  position: relative;\r\n  /* transition: 0.3s cubic-bezier(.25,.8,.50,1); */\r\n  user-select: none;\r\n  background: #f0f0f0;\r\n  animation: show-up-clock 0.2s linear;\r\n}\r\n@keyframes show-up-clock {\r\n  0% {\r\n    opacity: 0;\r\n    transform: scale(0.7);\r\n  }\r\n  100% {\r\n    opacity: 1;\r\n    transform: scale(1);\r\n  }\r\n}\r\n.time-picker-clock__container {\r\n  display: flex;\r\n  align-items: center;\r\n  justify-content: center;\r\n  padding: 10px;\r\n}\r\n.time-picker-clock__hand {\r\n  height: calc(50% - 28px);\r\n  width: 2px;\r\n  bottom: 50%;\r\n  left: calc(50% - 1px);\r\n  transform-origin: center bottom;\r\n  position: absolute;\r\n  will-change: transform;\r\n  z-index: 1;\r\n  background-color: rgba(0, 150, 136, 0.25);\r\n}\r\n\r\n.time-picker-clock__hand.between .time-picker-clock__hand--ring {\r\n  background-color: rgba(0, 150, 136, 0.25);\r\n  border-color: inherit;\r\n  border-radius: 100%;\r\n  width: 2.5rem;\r\n  height: 2.5rem;\r\n  content: \"\";\r\n  position: absolute;\r\n  top: -3%;\r\n  left: 50%;\r\n  transform: translate(-50%, -50%);\r\n}\r\n\r\n.time-picker-clock__hand.between .time-picker-clock__hand--ring:before {\r\n  background-color: rgba(0, 77, 64, 0.75);\r\n  border-color: inherit;\r\n  border-radius: 100%;\r\n  width: 10px;\r\n  height: 10px;\r\n  content: \"\";\r\n  position: absolute;\r\n  top: 50%;\r\n  left: 50%;\r\n  transform: translate(-50%, -50%);\r\n}\r\n\r\n.time-picker-clock__hand:after {\r\n  content: \"\";\r\n  position: absolute;\r\n  height: 6px;\r\n  width: 6px;\r\n  top: 100%;\r\n  left: 50%;\r\n  border-radius: 50%;\r\n  background-color: rgba(0, 77, 64, 0.75);\r\n  opacity: 0.75;\r\n  transform: translate(-50%, -50%);\r\n}\r\n.time-picker-clock > span {\r\n  align-items: center;\r\n  border-radius: 100%;\r\n  cursor: default;\r\n  display: flex;\r\n  font-size: 1rem;\r\n  line-height: 1.2;\r\n  justify-content: center;\r\n  left: calc(50% - 40px / 2);\r\n  height: 40px;\r\n  position: absolute;\r\n  text-align: center;\r\n  top: calc(50% - 40px / 2);\r\n  width: 40px;\r\n  user-select: none;\r\n}\r\n.time-picker-clock > span:hover,\r\n.time-picker-clock > span.active:hover {\r\n  cursor: pointer;\r\n}\r\n.time-picker-clock > span:active:hover,\r\n.time-picker-clock > span.active:active:hover {\r\n  cursor: move;\r\n}\r\n.time-picker-clock:active:hover {\r\n  cursor: move;\r\n}\r\n.time-picker-clock > span > span {\r\n  z-index: 1;\r\n}\r\n\r\n.time-picker-clock > span:before,\r\n.time-picker-clock > span:after {\r\n  content: \"\";\r\n  border-radius: 100%;\r\n  position: absolute;\r\n  top: 50%;\r\n  left: 50%;\r\n  height: 14px;\r\n  width: 14px;\r\n  transform: translate(-50%, -50%);\r\n}\r\n.time-picker-clock > span > span:after,\r\n.time-picker-clock > span > span:before {\r\n  height: 40px;\r\n  width: 40px;\r\n}\r\n.time-picker-clock > span.active {\r\n  color: #fff;\r\n  cursor: default;\r\n  z-index: 2;\r\n  background: blue;\r\n}\r\n.time-picker-clock > span > span.disabled {\r\n  pointer-events: none;\r\n}\r\n\r\n.picker__footer .clockpicker-button {\r\n  padding-left: 10px;\r\n  padding-right: 10px;\r\n}\r\n";
-styleInject(css$i);
-
-var css$j = ".Toastify__toast-container {\r\n  z-index: 9999;\r\n  position: fixed;\r\n  padding: 4px;\r\n  width: 320px;\r\n  box-sizing: border-box;\r\n  color: #fff;\r\n}\r\n.Toastify__toast-container--top-left {\r\n  top: 1em;\r\n  left: 1em;\r\n}\r\n.Toastify__toast-container--top-center {\r\n  top: 1em;\r\n  left: 50%;\r\n  margin-left: -160px;\r\n}\r\n.Toastify__toast-container--top-right {\r\n  top: 1em;\r\n  right: 1em;\r\n}\r\n.Toastify__toast-container--bottom-left {\r\n  bottom: 1em;\r\n  left: 1em;\r\n}\r\n.Toastify__toast-container--bottom-center {\r\n  bottom: 1em;\r\n  left: 50%;\r\n  margin-left: -160px;\r\n}\r\n.Toastify__toast-container--bottom-right {\r\n  bottom: 1em;\r\n  right: 1em;\r\n}\r\n\r\n@media only screen and (max-width: 480px) {\r\n  .Toastify__toast-container {\r\n    width: 100vw;\r\n    padding: 0;\r\n    left: 0;\r\n    margin: 0;\r\n  }\r\n  .Toastify__toast-container--top-left,\r\n  .Toastify__toast-container--top-center,\r\n  .Toastify__toast-container--top-right {\r\n    top: 0;\r\n  }\r\n  .Toastify__toast-container--bottom-left,\r\n  .Toastify__toast-container--bottom-center,\r\n  .Toastify__toast-container--bottom-right {\r\n    bottom: 0;\r\n  }\r\n  .Toastify__toast-container--rtl {\r\n    right: 0;\r\n    left: initial;\r\n  }\r\n}\r\n\r\n.Toastify__toast {\r\n  position: relative;\r\n  min-height: 64px;\r\n  box-sizing: border-box;\r\n  margin-bottom: 1rem;\r\n  padding: 8px;\r\n  border-radius: 1px;\r\n  box-shadow: 0 1px 10px 0 rgba(0, 0, 0, 0.1), 0 2px 15px 0 rgba(0, 0, 0, 0.05);\r\n  display: -ms-flexbox;\r\n  display: flex;\r\n  -ms-flex-pack: justify;\r\n  justify-content: space-between;\r\n  max-height: 800px;\r\n  overflow: hidden;\r\n  font-family: sans-serif;\r\n  cursor: pointer;\r\n  direction: ltr;\r\n}\r\n.Toastify__toast--rtl {\r\n  direction: rtl;\r\n}\r\n.Toastify__toast--default {\r\n  background: #fff;\r\n  color: #aaa;\r\n}\r\n.Toastify__toast--info {\r\n  background: #3498db;\r\n}\r\n.Toastify__toast--success {\r\n  background: #07bc0c;\r\n}\r\n.Toastify__toast--warning {\r\n  background: #f1c40f;\r\n}\r\n.Toastify__toast--error {\r\n  background: #e74c3c;\r\n}\r\n.Toastify__toast-body {\r\n  margin: auto 0;\r\n  -ms-flex: 1;\r\n  flex: 1;\r\n}\r\n\r\n@media only screen and (max-width: 480px) {\r\n  .Toastify__toast {\r\n    margin-bottom: 0;\r\n  }\r\n}\r\n\r\n.Toastify__close-button {\r\n  color: #fff;\r\n  font-weight: bold;\r\n  font-size: 14px;\r\n  background: transparent;\r\n  outline: none;\r\n  border: none;\r\n  padding: 0;\r\n  cursor: pointer;\r\n  opacity: 0.7;\r\n  transition: 0.3s ease;\r\n  -ms-flex-item-align: start;\r\n  align-self: flex-start;\r\n}\r\n.Toastify__close-button--default {\r\n  color: #000;\r\n  opacity: 0.3;\r\n}\r\n.Toastify__close-button:hover,\r\n.Toastify__close-button:focus {\r\n  opacity: 1;\r\n}\r\n\r\n@keyframes Toastify__trackProgress {\r\n  0% {\r\n    transform: scaleX(1);\r\n  }\r\n  100% {\r\n    transform: scaleX(0);\r\n  }\r\n}\r\n\r\n.Toastify__progress-bar {\r\n  position: absolute;\r\n  bottom: 0;\r\n  left: 0;\r\n  width: 100%;\r\n  height: 5px;\r\n  z-index: 9999;\r\n  opacity: 0.7;\r\n  background-color: rgba(255, 255, 255, 0.7);\r\n  transform-origin: left;\r\n}\r\n.Toastify__progress-bar--animated {\r\n  animation: Toastify__trackProgress linear 1 forwards;\r\n}\r\n.Toastify__progress-bar--controlled {\r\n  transition: transform 0.2s;\r\n}\r\n.Toastify__progress-bar--rtl {\r\n  right: 0;\r\n  left: initial;\r\n  transform-origin: right;\r\n}\r\n.Toastify__progress-bar--default {\r\n  background: linear-gradient(\r\n    to right,\r\n    #4cd964,\r\n    #5ac8fa,\r\n    #007aff,\r\n    #34aadc,\r\n    #5856d6,\r\n    #ff2d55\r\n  );\r\n}\r\n\r\n@keyframes Toastify__bounceInRight {\r\n  from,\r\n  60%,\r\n  75%,\r\n  90%,\r\n  to {\r\n    animation-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);\r\n  }\r\n  from {\r\n    opacity: 0;\r\n    transform: translate3d(3000px, 0, 0);\r\n  }\r\n  60% {\r\n    opacity: 1;\r\n    transform: translate3d(-25px, 0, 0);\r\n  }\r\n  75% {\r\n    transform: translate3d(10px, 0, 0);\r\n  }\r\n  90% {\r\n    transform: translate3d(-5px, 0, 0);\r\n  }\r\n  to {\r\n    transform: none;\r\n  }\r\n}\r\n\r\n@keyframes Toastify__bounceOutRight {\r\n  20% {\r\n    opacity: 1;\r\n    transform: translate3d(-20px, 0, 0);\r\n  }\r\n  to {\r\n    opacity: 0;\r\n    transform: translate3d(2000px, 0, 0);\r\n  }\r\n}\r\n\r\n@keyframes Toastify__bounceInLeft {\r\n  from,\r\n  60%,\r\n  75%,\r\n  90%,\r\n  to {\r\n    animation-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);\r\n  }\r\n  0% {\r\n    opacity: 0;\r\n    transform: translate3d(-3000px, 0, 0);\r\n  }\r\n  60% {\r\n    opacity: 1;\r\n    transform: translate3d(25px, 0, 0);\r\n  }\r\n  75% {\r\n    transform: translate3d(-10px, 0, 0);\r\n  }\r\n  90% {\r\n    transform: translate3d(5px, 0, 0);\r\n  }\r\n  to {\r\n    transform: none;\r\n  }\r\n}\r\n\r\n@keyframes Toastify__bounceOutLeft {\r\n  20% {\r\n    opacity: 1;\r\n    transform: translate3d(20px, 0, 0);\r\n  }\r\n  to {\r\n    opacity: 0;\r\n    transform: translate3d(-2000px, 0, 0);\r\n  }\r\n}\r\n\r\n@keyframes Toastify__bounceInUp {\r\n  from,\r\n  60%,\r\n  75%,\r\n  90%,\r\n  to {\r\n    animation-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);\r\n  }\r\n  from {\r\n    opacity: 0;\r\n    transform: translate3d(0, 3000px, 0);\r\n  }\r\n  60% {\r\n    opacity: 1;\r\n    transform: translate3d(0, -20px, 0);\r\n  }\r\n  75% {\r\n    transform: translate3d(0, 10px, 0);\r\n  }\r\n  90% {\r\n    transform: translate3d(0, -5px, 0);\r\n  }\r\n  to {\r\n    transform: translate3d(0, 0, 0);\r\n  }\r\n}\r\n\r\n@keyframes Toastify__bounceOutUp {\r\n  20% {\r\n    transform: translate3d(0, -10px, 0);\r\n  }\r\n  40%,\r\n  45% {\r\n    opacity: 1;\r\n    transform: translate3d(0, 20px, 0);\r\n  }\r\n  to {\r\n    opacity: 0;\r\n    transform: translate3d(0, -2000px, 0);\r\n  }\r\n}\r\n\r\n@keyframes Toastify__bounceInDown {\r\n  from,\r\n  60%,\r\n  75%,\r\n  90%,\r\n  to {\r\n    animation-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);\r\n  }\r\n  0% {\r\n    opacity: 0;\r\n    transform: translate3d(0, -3000px, 0);\r\n  }\r\n  60% {\r\n    opacity: 1;\r\n    transform: translate3d(0, 25px, 0);\r\n  }\r\n  75% {\r\n    transform: translate3d(0, -10px, 0);\r\n  }\r\n  90% {\r\n    transform: translate3d(0, 5px, 0);\r\n  }\r\n  to {\r\n    transform: none;\r\n  }\r\n}\r\n\r\n@keyframes Toastify__bounceOutDown {\r\n  20% {\r\n    transform: translate3d(0, 10px, 0);\r\n  }\r\n  40%,\r\n  45% {\r\n    opacity: 1;\r\n    transform: translate3d(0, -20px, 0);\r\n  }\r\n  to {\r\n    opacity: 0;\r\n    transform: translate3d(0, 2000px, 0);\r\n  }\r\n}\r\n\r\n.Toastify__bounce-enter--top-left,\r\n.Toastify__bounce-enter--bottom-left {\r\n  animation-name: Toastify__bounceInLeft;\r\n}\r\n\r\n.Toastify__bounce-enter--top-right,\r\n.Toastify__bounce-enter--bottom-right {\r\n  animation-name: Toastify__bounceInRight;\r\n}\r\n\r\n.Toastify__bounce-enter--top-center {\r\n  animation-name: Toastify__bounceInDown;\r\n}\r\n\r\n.Toastify__bounce-enter--bottom-center {\r\n  animation-name: Toastify__bounceInUp;\r\n}\r\n\r\n.Toastify__bounce-exit--top-left,\r\n.Toastify__bounce-exit--bottom-left {\r\n  animation-name: Toastify__bounceOutLeft;\r\n}\r\n\r\n.Toastify__bounce-exit--top-right,\r\n.Toastify__bounce-exit--bottom-right {\r\n  animation-name: Toastify__bounceOutRight;\r\n}\r\n\r\n.Toastify__bounce-exit--top-center {\r\n  animation-name: Toastify__bounceOutUp;\r\n}\r\n\r\n.Toastify__bounce-exit--bottom-center {\r\n  animation-name: Toastify__bounceOutDown;\r\n}\r\n\r\n@keyframes Toastify__zoomIn {\r\n  from {\r\n    opacity: 0;\r\n    transform: scale3d(0.3, 0.3, 0.3);\r\n  }\r\n  50% {\r\n    opacity: 1;\r\n  }\r\n}\r\n\r\n@keyframes Toastify__zoomOut {\r\n  from {\r\n    opacity: 1;\r\n  }\r\n  50% {\r\n    opacity: 0;\r\n    transform: scale3d(0.3, 0.3, 0.3);\r\n  }\r\n  to {\r\n    opacity: 0;\r\n  }\r\n}\r\n\r\n.Toastify__zoom-enter {\r\n  animation-name: Toastify__zoomIn;\r\n}\r\n\r\n.Toastify__zoom-exit {\r\n  animation-name: Toastify__zoomOut;\r\n}\r\n\r\n@keyframes Toastify__flipIn {\r\n  from {\r\n    transform: perspective(400px) rotate3d(1, 0, 0, 90deg);\r\n    animation-timing-function: ease-in;\r\n    opacity: 0;\r\n  }\r\n  40% {\r\n    transform: perspective(400px) rotate3d(1, 0, 0, -20deg);\r\n    animation-timing-function: ease-in;\r\n  }\r\n  60% {\r\n    transform: perspective(400px) rotate3d(1, 0, 0, 10deg);\r\n    opacity: 1;\r\n  }\r\n  80% {\r\n    transform: perspective(400px) rotate3d(1, 0, 0, -5deg);\r\n  }\r\n  to {\r\n    transform: perspective(400px);\r\n  }\r\n}\r\n\r\n@keyframes Toastify__flipOut {\r\n  from {\r\n    transform: perspective(400px);\r\n  }\r\n  30% {\r\n    transform: perspective(400px) rotate3d(1, 0, 0, -20deg);\r\n    opacity: 1;\r\n  }\r\n  to {\r\n    transform: perspective(400px) rotate3d(1, 0, 0, 90deg);\r\n    opacity: 0;\r\n  }\r\n}\r\n\r\n.Toastify__flip-enter {\r\n  animation-name: Toastify__flipIn;\r\n}\r\n\r\n.Toastify__flip-exit {\r\n  animation-name: Toastify__flipOut;\r\n}\r\n\r\n@keyframes Toastify__slideInRight {\r\n  from {\r\n    transform: translate3d(110%, 0, 0);\r\n    visibility: visible;\r\n  }\r\n  to {\r\n    transform: translate3d(0, 0, 0);\r\n  }\r\n}\r\n\r\n@keyframes Toastify__slideInLeft {\r\n  from {\r\n    transform: translate3d(-110%, 0, 0);\r\n    visibility: visible;\r\n  }\r\n  to {\r\n    transform: translate3d(0, 0, 0);\r\n  }\r\n}\r\n\r\n@keyframes Toastify__slideInUp {\r\n  from {\r\n    transform: translate3d(0, 110%, 0);\r\n    visibility: visible;\r\n  }\r\n  to {\r\n    transform: translate3d(0, 0, 0);\r\n  }\r\n}\r\n\r\n@keyframes Toastify__slideInDown {\r\n  from {\r\n    transform: translate3d(0, -110%, 0);\r\n    visibility: visible;\r\n  }\r\n  to {\r\n    transform: translate3d(0, 0, 0);\r\n  }\r\n}\r\n\r\n@keyframes Toastify__slideOutRight {\r\n  from {\r\n    transform: translate3d(0, 0, 0);\r\n  }\r\n  to {\r\n    visibility: hidden;\r\n    transform: translate3d(110%, 0, 0);\r\n  }\r\n}\r\n\r\n@keyframes Toastify__slideOutLeft {\r\n  from {\r\n    transform: translate3d(0, 0, 0);\r\n  }\r\n  to {\r\n    visibility: hidden;\r\n    transform: translate3d(-110%, 0, 0);\r\n  }\r\n}\r\n\r\n@keyframes Toastify__slideOutDown {\r\n  from {\r\n    transform: translate3d(0, 0, 0);\r\n  }\r\n  to {\r\n    visibility: hidden;\r\n    transform: translate3d(0, 500px, 0);\r\n  }\r\n}\r\n\r\n@keyframes Toastify__slideOutUp {\r\n  from {\r\n    transform: translate3d(0, 0, 0);\r\n  }\r\n  to {\r\n    visibility: hidden;\r\n    transform: translate3d(0, -500px, 0);\r\n  }\r\n}\r\n\r\n.Toastify__slide-enter--top-left,\r\n.Toastify__slide-enter--bottom-left {\r\n  animation-name: Toastify__slideInLeft;\r\n}\r\n\r\n.Toastify__slide-enter--top-right,\r\n.Toastify__slide-enter--bottom-right {\r\n  animation-name: Toastify__slideInRight;\r\n}\r\n\r\n.Toastify__slide-enter--top-center {\r\n  animation-name: Toastify__slideInDown;\r\n}\r\n\r\n.Toastify__slide-enter--bottom-center {\r\n  animation-name: Toastify__slideInUp;\r\n}\r\n\r\n.Toastify__slide-exit--top-left,\r\n.Toastify__slide-exit--bottom-left {\r\n  animation-name: Toastify__slideOutLeft;\r\n}\r\n\r\n.Toastify__slide-exit--top-right,\r\n.Toastify__slide-exit--bottom-right {\r\n  animation-name: Toastify__slideOutRight;\r\n}\r\n\r\n.Toastify__slide-exit--top-center {\r\n  animation-name: Toastify__slideOutUp;\r\n}\r\n\r\n.Toastify__slide-exit--bottom-center {\r\n  animation-name: Toastify__slideOutDown;\r\n}\r\n";
-styleInject(css$j);
-
 export { 
    Alert,
    Animation,
@@ -9143,15 +8147,12 @@ export {
    Fa,
    Footer,
    FormInline,
-   FreeBird,
    HamburgerToggler,
    Input,
-   InputFile,
    InputGroup,
    InputNumeric,
    InputRange,
    InputSwitch,
-   Jumbotron,
    Lightbox,
    ListGroup,
    ListGroupItem,
@@ -9191,16 +8192,13 @@ export {
    DropdownItem as MDBDropdownItem,
    DropdownMenu as MDBDropdownMenu,
    DropdownToggle as MDBDropdownToggle,
-   InputFile as MDBFileInput,
    Footer as MDBFooter,
    FormInline as MDBFormInline,
-   FreeBird as MDBFreeBird,
    HamburgerToggler as MDBHamburgerToggler,
    Fa as MDBIcon,
    Input as MDBInput,
    InputGroup as MDBInputGroup,
    InputNumeric as MDBInputSelect,
-   Jumbotron as MDBJumbotron,
    Lightbox as MDBLightbox,
    ListGroup as MDBListGroup,
    ListGroupItem as MDBListGroupItem,
@@ -9216,14 +8214,12 @@ export {
    NavbarBrand as MDBNavbarBrand,
    NavbarNav as MDBNavbarNav,
    NavbarToggler as MDBNavbarToggler,
-   Notification as MDBNotification,
    Popper as MDBPopover,
    PopoverBody as MDBPopoverBody,
    PopoverHeader as MDBPopoverHeader,
    Popper as MDBPopper,
    Progress as MDBProgress,
    InputRange as MDBRangeInput,
-   Rating as MDBRating,
    Row as MDBRow,
    ScrollBar as MDBScrollbar,
    ScrollBox as MDBScrollspyBox,
@@ -9242,18 +8238,12 @@ export {
    Spinner as MDBSpinner,
    Step as MDBStep,
    Stepper as MDBStepper,
-   Sticky as MDBSticky,
    Container$1 as MDBStickyContent,
    InputSwitch as MDBSwitch,
    TabContent as MDBTabContent,
    TabPane as MDBTabPane,
    Testimonial as MDBTestimonial,
-   Timeline as MDBTimeline,
-   TimelineStep as MDBTimelineStep, 
    Popper as MDBTooltip, 
-   Treeview as MDBTreeview, 
-   TreeviewItem as MDBTreeviewItem, 
-   TreeviewList as MDBTreeviewList, 
    View as MDBView, 
    Waves as MDBWaves, 
    Mask, 
@@ -9268,14 +8258,12 @@ export {
    NavbarBrand, 
    NavbarNav, 
    NavbarToggler, 
-   Notification, 
    ScrollBar as PerfectScrollbar, 
    Popper as Popover, 
    PopoverBody, 
    PopoverHeader, 
    Popper, 
    Progress, 
-   Rating, 
    Row, 
    ScrollBox as ScrollSpyBox, 
    ScrollSpyList, 
@@ -9293,16 +8281,10 @@ export {
    Spinner, 
    Step, 
    Stepper, 
-   Sticky, 
    Container$1 as StickyContainer, 
    TabContent, 
    TabPane, 
    Testimonial, 
-   Timeline, 
-   TimelineStep, 
-   Popper as Tooltip, 
-   Treeview, 
-   TreeviewItem, 
-   TreeviewList, 
+   Popper as Tooltip,
    View,
    Waves };
